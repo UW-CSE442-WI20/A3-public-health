@@ -1,0 +1,272 @@
+TABLE 1. Annual reported cases of notifiable diseases and rates per 100,000, excluding U.S. Territories - - United States, 2018
+
+column labels in same order that data fields appears in each record below:
+Disease
+Case Count
+Rate
+
+tab delimited data:
+Anthrax 	1	0.00
+Arboviral diseases, Chikungunya virus disease 	117	0.04
+Arboviral diseases, Eastern equine encephalitis virus disease, Neuroinvasive 	6	0.00
+Arboviral diseases, Eastern equine encephalitis virus disease, Non-neuroinvasive 	—	—
+Arboviral diseases, Jamestown Canyon  virus disease, Neuroinvasive 	25	0.01
+Arboviral diseases, Jamestown Canyon  virus disease, Non-neuroinvasive 	16	0.00
+Arboviral diseases, La Crosse  virus disease, Neuroinvasive 	83	0.03
+Arboviral diseases, La Crosse  virus disease, Non-neuroinvasive 	3	0.00
+Arboviral diseases, Powassan virus disease, Neuroinvasive 	21	0.01
+Arboviral diseases, Powassan virus disease, Non-neuroinvasive 	—	—
+Arboviral diseases, St. Louis encephalitis virus disease, Neuroinvasive 	5	0.00
+Arboviral diseases, St. Louis encephalitis virus disease, Non-neuroinvasive 	3	0.00
+Arboviral diseases, West Nile virus disease, Neuroinvasive 	1,657	0.51
+Arboviral diseases, West Nile virus disease, Non-neuroinvasive 	989	0.30
+Arboviral diseases, Western equine encephalitis virus disease, Neuroinvasive 	—	—
+Arboviral diseases, Western equine encephalitis virus disease, Non-neuroinvasive 	—	—
+Babesiosis, Total 	2,160	0.79
+Babesiosis, Confirmed 	1,861	0.68
+Babesiosis, Probable 	299	0.11
+Botulism, Total 	225	0.07
+Botulism, Foodborne 	17	0.01
+Botulism, Infant 	157	4.08
+Botulism, Other (wound & unspecified) 	51	0.02
+Brucellosis 	138	0.04
+Campylobacteriosis 	70,200	21.46
+Chancroid 	3	0.00
+Chlamydia trachomatis infection 	1,758,668	537.54
+Cholera 	14	0.00
+Coccidioidomycosis *	15,611	11.58
+Cryptosporidiosis, Total 	12,533	3.83
+Cryptosporidiosis, Confirmed 	8,980	2.74
+Cryptosporidiosis, Probable 	3,553	1.09
+Cyclosporiasis 	3,519	1.20
+Dengue virus infections, Dengue †	424	0.13
+Dengue virus infections, Dengue-like illness †	41	0.01
+Dengue virus infections, Severe dengue †	9	0.00
+Diphtheria 	1	0.00
+Ehrlichiosis and Anaplasmosis, Anaplasma phagocytophilum infection 	4,008	1.27
+Ehrlichiosis and Anaplasmosis, Ehrlichia chaffeensis infection 	1,799	0.57
+Ehrlichiosis and Anaplasmosis, Ehrlichia ewingii infection 	33	0.01
+Ehrlichiosis and Anaplasmosis, Undetermined ehrlichiosis/anaplasmosis 	283	0.09
+Giardiasis 	15,548	6.06
+Gonorrhea 	583,405	178.32
+Haemophilus influenzae, invasive disease, All ages, all serotypes 	5,573	1.70
+Haemophilus influenzae, invasive disease, Age <5 years, Serotype b 	38	0.19
+Haemophilus influenzae, invasive disease, Age <5 years, Non-b serotype 	191	0.96
+Haemophilus influenzae, invasive disease, Age <5 years, Nontypeable 	222	1.12
+Haemophilus influenzae, invasive disease, Age <5 years, Unknown serotype 	175	0.88
+Hansen's disease 	90	0.03
+Hantavirus infection, non-hantavirus pulmonary syndrome 	2	0.00
+Hantavirus pulmonary syndrome 	18	0.01
+Hemolytic uremic syndrome post-diarrheal 	376	0.12
+Hepatitis, A, acute §	12,474	3.81
+Hepatitis, B, acute §	3,322	1.02
+Hepatitis, B, perinatal infection §	23	0.30
+Hepatitis, C, acute §	4,768	1.54
+Hepatitis, C, acute, Confirmed §	3,621	1.17
+Hepatitis, C, acute, Probable §	1,147	0.37
+Hepatitis, C, perinatal infection §	214	0.07
+Human immunodeficiency virus diagnoses 	32,999	10.09
+Influenza-associated pediatric mortality 	159	0.22
+Invasive pneumococcal disease, All ages ¶	19,857	8.14
+Invasive pneumococcal disease, All ages, Confirmed ¶	19,619	8.04
+Invasive pneumococcal disease, All ages, Probable ¶	238	0.10
+Invasive pneumococcal disease, Age <5 years ¶	1,116	0.43
+Invasive pneumococcal disease, Age <5 years, Confirmed ¶	1,078	6.80
+Invasive pneumococcal disease, Age <5 years, Probable ¶	38	0.24
+Legionellosis 	9,933	3.04
+Leptospirosis 	91	0.04
+Listeriosis 	864	0.26
+Lyme disease, Total 	33,666	10.34
+Lyme disease, Confirmed 	23,558	7.23
+Lyme disease, Probable 	10,108	3.10
+Malaria 	1,748	0.53
+Measles, Total 	375	0.11
+Measles, Indigenous 	296	0.09
+Measles, Imported 	79	0.02
+Meningococcal disease, All serogroups 	327	0.10
+Meningococcal disease, Serogroups ACWY 	100	0.03
+Meningococcal disease, Serogroup B 	81	0.02
+Meningococcal disease, Other serogroups 	23	0.01
+Meningococcal disease, Unknown serogroup 	123	0.04
+Mumps 	2,515	0.77
+Novel Influenza A virus infections 	14	0.00
+Paratyphoid fever **	133	0.04
+Pertussis 	15,609	4.77
+Plague 	1	0.00
+Poliomyelitis, paralytic 	—	—
+Poliovirus infection, nonparalytic 	—	—
+Psittacosis 	22	0.01
+Q fever, Total 	215	0.07
+Q fever, Acute 	178	0.05
+Q fever, Chronic 	37	0.01
+Rabies, Animal 	4,984	1.52
+Rabies, Human 	3	0.00
+Rubella 	4	0.00
+Rubella, congenital syndrome 	—	—
+Salmonellosis (excluding paratyphoid fever and typhoid fever) ††	60,999	18.64
+Severe acute respiratory syndrome-associated coronavirus disease 	—	—
+Shiga toxin-producing Escherichia coli (STEC) 	15,996	4.89
+Shigellosis 	16,333	4.99
+Smallpox 	—	—
+Spotted fever rickettsiosis, Total 	5,544	1.71
+Spotted fever rickettsiosis, Confirmed 	124	0.04
+Spotted fever rickettsiosis, Probable 	5,420	1.67
+Streptococcal toxic shock syndrome 	371	0.18
+Syphilis, Total, all stages §§	115,045	35.16
+Syphilis, Congenital 	1,306	34.44
+Syphilis, Primary and secondary 	35,063	10.72
+Tetanus 	23	0.01
+Toxic shock syndrome (other than Streptococcal) 	33	0.01
+Trichinellosis 	1	0.00
+Tuberculosis 	9,025	2.76
+Tularemia 	229	0.07
+Typhoid fever 	401	0.12
+Vancomycin-intermediate Staphylococcus aureus 	85	0.03
+Vancomycin-resistant Staphylococcus aureus 	—	—
+Varicella morbidity 	8,201	3.07
+Varicella mortality 	6	0.00
+Vibriosis, Total 	2,964	0.92
+Vibriosis, Confirmed 	1,822	0.57
+Vibriosis, Probable 	1,142	0.35
+Viral hemorrhagic fevers, Crimean-Congo hemorrhagic fever virus 	—	—
+Viral hemorrhagic fevers, Ebola virus 	—	—
+Viral hemorrhagic fevers, Guanarito virus 	—	—
+Viral hemorrhagic fevers, Junin virus 	—	—
+Viral hemorrhagic fevers, Lassa virus 	—	—
+Viral hemorrhagic fevers, Lujo virus 	—	—
+Viral hemorrhagic fevers, Machupo virus 	—	—
+Viral hemorrhagic fevers, Marburg virus 	—	—
+Viral hemorrhagic fevers, Sabia virus 	—	—
+Yellow fever 	—	—
+Zika virus, Zika virus disease, congenital ¶¶	2	0.05
+Zika virus, Zika virus disease, non-congenital 	79	0.02
+Zika virus, Zika virus infection, congenital ¶¶	8	0.21
+Zika virus, Zika virus infection, non-congenital 	245	0.07
+
+—: No reported cases - The reporting jurisdiction did not submit any cases to CDC.
+
+* Reportable in <25 states.
+
+† Counts include confirmed and probable dengue cases.
+
+§ Chronic hepatitis B and C data are not included in NNDSS tables but reported case counts are included in the annual Summary of Viral Hepatitis, published online by CDC's Division of Viral Hepatitis, available at https://www.cdc.gov/hepatitis/statistics/SurveillanceRpts.htm.
+
+¶ Counts include drug resistant and susceptible cases of Invasive Pneumococcal Disease. This condition was previously named Streptococcus pneumoniae invasive disease and cases were reported to CDC using different event codes to specify whether the cases were drug resistant or in a defined age group, such as <5 years.
+
+** Prior to 2018, cases of paratyphoid fever were considered salmonellosis. 
+
+†† Prior to 2018, cases of paratyphoid fever were included as salmonellosis, but beginning in 2018 they are being published as paratyphoid fever. 
+
+§§ Includes the following categories: primary; secondary; early non-primary non-secondary (includes cases previously reported as early latent); and unknown duration or late (includes cases previously reported as late latent syphilis and cases previously reported as late syphilis with clinical manifestations).
+
+¶¶ Data reported to ArboNET using the national surveillance case definition for congenital Zika virus infection (CSTE Position Statement 16-ID-01).
+
+
+Notes:
+
+	These are annual cases of selected infectious 
+	national notifiable diseases from the National Notifiable Diseases Surveillance System (NNDSS). 
+	NNDSS data reported by the 50 states, New York City, the District of Columbia, and the U.S. territories are 
+	collated and published. Cases are reported by state health departments to CDC weekly. Because source datasets 
+	may be updated as additional information is received, statistics in publications based on that source data may 
+	differ from what is presented in these tables. 
+
+	The list of nationally notifiable infectious diseases and conditions for 2018 and their national surveillance case definitions are 
+	available at 
+	https://wwwn.cdc.gov/nndss/conditions/notifiable/2018/, https://wwwn.cdc.gov/nndss/conditions/notifiable/2018/.   
+	This list incorporates the Council of State and Territorial Epidemiologists (CSTE) position statements approved in 2017 
+	by CSTE for national surveillance, that were implemented in January 2018, including updated surveillance case definitions for 
+	anthrax, shiga toxin-producing Escherichia coli, and syphilis. Perinatal hepatitis c virus infection became a new nationally 
+	notifiable condition in 2018.  While Carbapenemase Producing Carbapenem-Resistant Enterobacteriaceae (CP-CRE) was added to the 
+	list of nationally notifiable diseases in 2018, reporting jurisdictions could not submit data for this condition since Office of 
+	Management and Budget Paperwork Reduction Act approval was pending during 2018.  Publication criteria for the finalized 2018 data 
+	are available at 
+	https://wonder.cdc.gov/nndss/documents/2018_NNDSS _Publication_Criteria_07122019_updated_09230219.pdf, https://wonder.cdc.gov/nndss/documents/2018_NNDSS _Publication_Criteria_07122019_updated_09230219.pdf.   
+	See also https://wwwn.cdc.gov/nndss/document/Users_guide_WONDER_tables_cleared_final.pdf, 
+	Guide to Interpreting Provisional and Finalized NNDSS Data. 
+
+	Annual tables for 2016 and later years are available on https://wonder.cdc.gov/nndss/nndss_annual_tables_menu.asp, CDC WONDER.
+
+	Annual summary reports from 1993-2015 are available as published in the 
+	https://www.cdc.gov/mmwr/mmwr_nd/index.html, MMWR.
+
+	NNDSS annual tables since 1952 are available at https://stacks.cdc.gov/nndss, CDC Stacks
+	(once in CDC Stacks select "Annual Reports" in the "Genre" box to the left).  
+
+	For most conditions, national incidence rates are calculated as the number of reported cases for each infectious 
+	disease or condition divided by the U.S. resident population for the specified demographic population or the total U.S. 
+	resident population, multiplied by 100,000. When a nationally notifiable infectious condition is associated with a 
+	specific age restriction, the same restriction was applied to the population in the denominator of the incidence rate 
+	calculation. In addition, population data from reporting jurisdictions in which the disease or condition was not reportable 
+	or not available were excluded from the denominator of the incidence rate calculations.
+	
+	Population estimates for incidence rates are July 1st, 2018 estimates obtained from the National Center for Health Statistics (NCHS) 
+	postcensal estimates of the resident population of the United States for April 1, 2010 - July 1, 2018, by year, county, single year 
+	of age (range: 0 to 85 years), bridged-race (white, black or African American, American Indian or Alaska Native, Asian, 
+	or Pacific Islander), Hispanic ethnicity (not Hispanic or Latino, Hispanic or Latino), and sex (Vintage 2018), 
+	prepared under a collaborative arrangement with the U.S. Census Bureau. Population estimates for states released 
+	June 25, 2019 are available at 
+	https://www.cdc.gov/nchs/nvss/bridged_race/data_documentation.htm, https://www.cdc.gov/nchs/nvss/bridged_race/data_documentation.htm. 
+	Population estimates for territories are the 2018 mid-year estimates from the U.S. Census Bureau International Data Base, accessed on 
+	June 26, 2019 at  
+	https://www.census.gov/data-tools/demo/idb/informationGateway.php, https://www.census.gov/data-tools/demo/idb/informationGateway.php. 
+	The choice of population denominators 
+	for incidence is based on the availability of population data at the time of publication preparation. 
+	
+		Age restrictions in the numerator and denominator are applied for the following childhood conditions:
+		
+		
+			Zika virus disease, congenital (age restriction in numerator and denominator is <1 year)
+		
+			Zika virus infection, congenital (age restriction in numerator and denominator is <1 year)
+		
+			Haemophilus influenzae, invasive disease <5 years (age restriction in numerator and denominator is <5 years) 
+		
+			Invasive pneumococcal disease <5 years (age restriction in numerator and denominator is <5 years) 
+		
+			Influenza associated pediatric mortality (age restriction in numerator and denominator is <18 years)
+		
+			Infant botulism (age restriction in numerator and denominator is <1 year) 
+		
+			Congenital rubella syndrome (age restriction in numerator and denominator is  <1 year)
+		
+			Perinatal Hepatitis B infection (age restriction in numerator is &le;24 months, denominator is <24 months) 
+		
+			Perinatal Hepatitis C infection (age restriction in numerator is &le;36 months, denominator is <36 months) 
+		
+	
+			
+			Data for congenital syphilis are aggregated by the infant's year of birth.  The rate for congenital syphilis is based upon the 
+			number of reported cases per 100,000 live births, using  natality data for 2018 (National Center for Health Statistics https://wonder.cdc.gov/natality.html, Natality 2018, as compiled from data
+			provided by the Vital Statistics Cooperative Program).  
+			The mother's race and ethnicity are used for race- and ethnicity-specific rates of congenital syphilis cases.  Congenital syphilis 
+			data are published in Syphilis Statistics in the Sexually Transmitted Diseases (STD) surveillance 
+			report (https://www.cdc.gov/std/syphilis/stats.htm, https://www.cdc.gov/std/syphilis/stats.htm) and in the historical archives of the STD surveillance 
+			report (https://www.cdc.gov/std/stats/archive.htm, https://www.cdc.gov/std/stats/archive.htm). The STD surveillance 
+			report (https://www.cdc.gov/std/syphilis/stats.htm, https://www.cdc.gov/std/syphilis/stats.htm) updates congenital syphilis cases and rates over time.    
+			
+
+	Surveillance data reported by other CDC programs might vary from data reported in these tables because of differences in
+	 1) the date used to aggregate the data, 2) the timing of reports, 3) the source of the data, 4) surveillance case definitions, 
+	 and 5) policies regarding case jurisdiction (i.e., which jurisdiction should submit the case notification to CDC).
+	
+Suggested Citation:
+
+	Centers for Disease Control and Prevention. National Notifiable Diseases Surveillance System, 2018 Annual Tables of Infectious Disease Data. 
+	Atlanta, GA. CDC Division of Health Informatics and Surveillance, 2019. 
+	Available at: https://www.cdc.gov/nndss/infectious-tables.html, https://www.cdc.gov/nndss/infectious-tables.html.
+
+Acknowledgement:
+
+	CDC acknowledges the Local, State, and Territorial Health Departments that collected the data from a range of case ascertainment 
+	sources (e.g., health-care providers, hospitals, laboratories) and reported these data to 
+	CDC's National Notifiable Diseases Surveillance System.
+
+
+
+https://wwwn.cdc.gov/nndss/, National Notifiable Diseases Surveillance System
+
+Provided by https://wonder.cdc.gov, CDC WONDER
+
+
+
