@@ -14,7 +14,6 @@
 41,Giardiasis,47051
 28,Coccidioidomycosis,41804
 28,"Cryptosporidiosis, Total",37400
-71,"Lyme disease, Probable",33564
 107,Tuberculosis,27402
 112,Varicella morbidity,25929
 66,Legionellosis,23532
@@ -23,11 +22,9 @@
 100,"Spotted fever rickettsiosis, Total",16061
 43,"Haemophilus influenzae, invasive disease, All ages, all serotypes",16016
 97,Shiga toxin-producing Escherichia coli (STEC),15996
-101,"Spotted fever rickettsiosis, Probable",15607
 81,Mumps,14993
 36,"Ehrlichiosis and Anaplasmosis, Anaplasma phagocytophilum infection",13921
 54,"Hepatitis, C, acute",11935
-31,"Cryptosporidiosis, Probable",11740
 53,"Hepatitis, B, acute",9949
 15,"Babesiosis, Total",6438
 115,"Vibriosis, Total",6322
@@ -40,15 +37,12 @@
 12,"Arboviral diseases, West Nile virus disease, Neuroinvasive",2733
 68,Listeriosis,2537
 12,"Arboviral diseases, West Nile virus disease, Non-neuroinvasive",2502
-57,"Hepatitis, C, acute, Probable",2159
 129,"Zika virus, Zika virus infection, non-congenital",1797
 33,"Dengue virus infections, Dengue",1764
-117,"Vibriosis, Probable",1762
 112,Typhoid fever,1196
 76,"Meningococcal disease, All serogroups",1055
 103,Streptococcal toxic shock syndrome,1026
 51,Hemolytic uremic syndrome post-diarrheal,1021
-18,"Babesiosis, Probable",998
 40,"Ehrlichiosis and Anaplasmosis, Undetermined ehrlichiosis/anaplasmosis",752
 111,Tularemia,698
 45,"Haemophilus influenzae, invasive disease, Age <5 years, Nontypeable",618
@@ -61,7 +55,6 @@
 72,"Measles, Indigenous",463
 89,"Q fever, Acute",463
 21,"Botulism, Infant",438
-60,"Invasive pneumococcal disease, All ages, Probable",421
 22,Brucellosis,405
 78,"Meningococcal disease, Unknown serogroup",396
 57,Influenza-associated pediatric mortality,367
@@ -89,7 +82,6 @@
 77,"Meningococcal disease, Other serogroups",69
 20,"Botulism, Foodborne",67
 130,"Zika virus, Zika virus infection, congenital",62
-65,"Invasive pneumococcal disease, Age <5 years, Probable",57
 128,"Zika virus, Zika virus disease, congenital",54
 108,Trichinellosis,42
 5,"Arboviral diseases, Jamestown Canyon  virus disease, Non-neuroinvasive",41
