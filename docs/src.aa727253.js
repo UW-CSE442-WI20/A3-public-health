@@ -1000,4 +1000,4 @@ module.exports=function(e){return e*e};
 },{}],"Focm":[function(require,module,exports) {
 var t=require("d3"),e=require("./utility-funcs");console.log("This function was imported from another file.",e(2));var n=function(){return Math.random()},r=[];setInterval(function(){var e=n();r.push(e),r.length>10&&r.shift(),t.selectAll("circle").transition().attr("r",o(e)),a()},1e3);var o=t.scaleSqrt().domain([0,1]).range([10,100]);console.log(o(.5));var a=function(){var e=t.selectAll("div.dataPoint").data(r,function(t){return t});e.enter().append("div").attr("class","dataPoint").text(function(t){return t}).style("font-size",function(t){return o(t)}).style("color",function(t,e){return 0===e?"black":t>r[e-1]?"green":"red"}),e.style("color","black"),e.exit().remove()};a();
 },{"d3":"UzF0","./utility-funcs":"SRj4"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.aa727253.js.map
+//# sourceMappingURL=src.aa727253.js.map
