@@ -1,0 +1,80 @@
+h1 {
+    color: blue;
+}
+
+.my-par {
+    color: red;
+}
+
+.my-header-group {
+    text-align: center;
+}
+
+img {
+    display: block;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+}
+
+.flex-element {
+    width: 100px;
+    height: 100px;
+    border: solid 1px black;
+    flex: 1;
+}
+
+.flex-element.a {
+    flex: 2;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: "header header" "content sidebar" "footer sidebar";
+    height: 600px;
+}
+
+.grid-element.header {
+    background-color: gray;
+    grid-area: header;
+}
+
+.grid-element.footer {
+    background-color: beige;
+    grid-area: footer;
+}
+
+.grid-element.content {
+    background-color: chartreuse;
+    grid-area: content;
+}
+
+.grid-element.sidebar {
+    background-color: blue;
+    grid-area: sidebar;
+}
+
+@keyframes pulse {
+    0% {
+        font-size: 12px
+    }
+    50% {
+        font-size: 18px
+    }
+    100% {
+        font-size: 12px
+    }
+}
+
+h2 {
+    animation: pulse 10s infinite;
+    min-height: 50px;
+}
+
+.dataPoint {
+    font-size: 18px;
+    margin: 0 auto;
+}
