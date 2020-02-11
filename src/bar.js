@@ -18,11 +18,10 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-  var month = 'Dec.'
-  var year = 2016
+  var year_month = 32
   // Parse the Data
   d3.csv(dated).then(function(data) {
-    data = data.filter(function(d){return d['Year'] == year && d['Month'] == month})
+    data = data.filter(function(d){return d['ym'] == year_month})
     data = data.sort(function(a,b){return b.Count - a.Count})
     data = data.slice(0,10)
     var max = d3.max(data, function(d) { return +d.Count;} );
