@@ -1,32 +1,63 @@
 (() => {
-    // add the label
-    label = document.getElementById("time-slider-label");
-    labels = ["2016", "2017", "2018", "2018 Dec."];
-    for (let i = 0; i < 36; i++) {
-        div = document.createElement("div");
-        if (i === 0) {
-            div.innerText = labels[0]
-        } else if (i === 12) {
-            div.innerText = labels[1]
-        } else if (i === 24) {
-            div.innerText = labels[2]
-        } else if (i === 35) {
-            div.innerText = labels[3]
-        }
-        label.appendChild(div);
-    }
+  const d3 = require('d3');
+  const myUtilityFunc = require('./utility-funcs');
 
-    // create the tick mark
-    list = document.getElementById("steplist");
-    for (let i = 0; i < 36; i++) {
-        opt = document.createElement("option");
-        opt.innerText = i;
-        list.appendChild(opt);
-    }
 
-    // behavior when slider changes
-    slider = document.getElementById("time-slider");
-    slider.addEventListener("change", function() {
-        console.log(this.value)
-    });
+  const dated = require('./dated.csv')
+
+  var margin = {top: 30, right: 30, bottom: 70, left: 60},
+      width = 920 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  var svg = d3.select("#bar-chart")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  var month = 'Dec.'
+  var year = 2016
+  // Parse the Data
+  d3.csv(dated).then(function(data) {
+    data = data.filter(function(d){return d['Year'] == year && d['Month'] == month})
+    data = data.sort(function(a,b){return b.Count - a.Count})
+    data = data.slice(0,10)
+    var max = d3.max(data, function(d) { return +d.Count;} );
+    var max = Math.ceil(max / 15000) * 15000
+    console.log(max)
+
+    // X axis
+    var x = d3.scaleBand()
+      .range([ 0, width ])
+      .domain(data.map(function(d) { return d.Disease; }))
+      .padding(0.2);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain([0, max])
+      .range([ height, 0]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
+
+    // Bars
+    svg.selectAll("mybar")
+      .data(data)
+      .enter()
+      .append("rect")
+        .attr("x", function(d) { return x(d.Disease); })
+        .attr("y", function(d) { return y(d.Count); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.Count); })
+        .attr("fill", "#69b3a2")
+
+  })
 })()
