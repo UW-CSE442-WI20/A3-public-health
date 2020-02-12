@@ -23,7 +23,7 @@
   d3.csv(dated).then(function(data) {
     data = data.filter(function(d){return d['ym'] == year_month})
     data = data.sort(function(a,b){return b.Count - a.Count})
-    data = data.slice(0,10)
+    data = data.slice(0,8)
     var max = d3.max(data, function(d) { return +d.Count;} );
     var max = Math.ceil(max / 15000) * 15000
     console.log(max)
@@ -47,6 +47,9 @@
     svg.append("g")
       .call(d3.axisLeft(y));
 
+    // Color Mappings Using this color-blind friendly color pallette:
+    // https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
+    var color_map = ['#332288', '#117733', '#44aa99', '#88ccee', '#ddcc77', '#cc6677', '#aa4499', '#aa4499']
     // Bars
     svg.selectAll("mybar")
       .data(data)
@@ -56,7 +59,7 @@
         .attr("y", function(d) { return y(d.Count); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Count); })
-        .attr("fill", "#69b3a2")
+        .attr("fill", function(d,i){return color_map[i]})
 
   })
 })()
