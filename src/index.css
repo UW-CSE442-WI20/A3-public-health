@@ -53,6 +53,11 @@ h1 {
     text-align: center;
 }
 
+ /* bar chart */
+#bar-chart > svg {
+    min-height: 700px;
+}
+
 /* css grid settings */
 
 body, .grid-container {

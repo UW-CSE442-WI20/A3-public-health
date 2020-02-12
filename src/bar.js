@@ -104,15 +104,46 @@ module.exports = (year_month = 0) => {
           .attr("height", function(d) { return height - y(d.Count); })
           .attr("fill", function(d,i){return color_map[d.Disease]})
     } else {
+      // when page first loads
+      // create hover window
+      var info = d3.select("body").append("div")
+        .attr("class", "tooltip")
       svg.selectAll("mybar")
         .data(data)
         .enter()
         .append("rect")
+          .attr("disease", (d) => {return d.Disease})
+          .attr("count", (d) => {return d.count})
           .attr("x", function(d) { return x(d.Disease); })
           .attr("y", function(d) { return y(d.Count); })
           .attr("width", x.bandwidth())
           .attr("height", function(d) { return height - y(d.Count); })
           .attr("fill", function(d,i){return color_map[d.Disease]})
+          .on('mouseover', function (d, i) {
+            // bar char hover color change
+            d3.select(this).transition()
+                 .duration(50)
+                 .attr("opacity", .85);
+            // show hover window
+            info.transition()
+              .duration(50)
+              .attr("opacity", 1)
+            // set the content and position the hover window
+            info.html(`<strong>${d.Disease}</strong><br>
+                       <strong>Date:</strong> ${document.getElementById("month-year").innerText}<br>
+                       <strong>Infected Number:</strong> ${parseInt(d.Count)}`)
+              .style("left", d3.event.pageX + 10 + "px")
+              .style("top", d3.event.pageY - 15 + "px")
+              .style("position", "absolute")
+          })
+          .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                  .duration(50)
+                  .attr("opacity", 1);
+                info.transition()
+                  .duration(50)
+                  .attr("opacity", 0)
+          })
     }
 
     var keys = data.map(function(d) { return d.Disease})

@@ -35,11 +35,8 @@ module.exports = () => {
         let month = sliderValue % 12;
         let year = Math.floor(sliderValue / 12);
         document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
-
-        // clear the old graph and legend
-        // svgs = document.querySelectorAll("svg");
+        // update bar chart
         bar(this.value);
-        // svgs.forEach(element => {element.remove()});
     }
     slider.addEventListener("input", update);
 };

@@ -16,7 +16,3 @@ if (!DEBUG_MODE) {
 slider();
 bar();
 
-// grid resclaing when year changes. change is very obvious the first time,
-// do the first change when page loads.
-sliderBar = document.getElementById("time-slider");
-
