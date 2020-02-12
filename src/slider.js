@@ -30,15 +30,18 @@ module.exports = () => {
 
     // behavior when slider changes
     slider = document.getElementById("time-slider");
-    slider.addEventListener("input", function() {
+    function update() {
         let sliderValue = this.value;
         let month = sliderValue % 12;
         let year = Math.floor(sliderValue / 12);
         document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
 
         // clear the old graph and legend
-        document.getElementById("bar-chart").innerHTML = "";
-        document.getElementById("bar-legend").innerHTML = "";
+        svgs = document.querySelectorAll("svg");
         bar(this.value);
-    });
+        let content = document.querySelectorAll("div.grid-element")[1];
+        let contentStyle = window.getComputedStyle(content);
+        svgs.forEach(element => {element.remove()});
+    }
+    slider.addEventListener("input", update);
 };

@@ -101,4 +101,5 @@ module.exports = (year_month = 0) => {
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
   })
+  return [svg, lsvg];
 };

@@ -57,19 +57,22 @@ h1 {
 
 body, .grid-container {
     display: grid;
-    grid-template-areas: "header    header  header"
-                         "sidebar   content content"
-                         "sidebar   content content"
-                         "sidebar   content content";
+    grid-template-areas: "header header header"
+                         "sidebar content content"
+                         "sidebar content content"
+                         "sidebar content content";
 }
+
 .grid-element.content {
     grid-area: content;
     margin-right: 16%;
+    min-width: 1200px;
 }
 
 .grid-element.sidebar {
     grid-area: sidebar;
     margin-left: 16%;
+    width: 400px;
 }
 
 /* An example of CSS anim */
