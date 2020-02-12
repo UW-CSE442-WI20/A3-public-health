@@ -1,8 +1,17 @@
+// Color Mappings Using this color-blind friendly color pallette:
+// https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
+var colors = ['#332288', '#117733', '#44aa99', '#88ccee', '#ddcc77', '#cc6677', '#aa4499', '#aa4499', '#882255'];
+var disease_list = ["Chlamydia trachomatis infection", "Campylobacteriosis", "Salmonellosis",
+                    "Human immunodeficiency virus diagnoses", "Invasive pneumococcal disease", "Pertussis",
+                    "Shigellosis"];
+var color_map = {};
+// looping over disease list and map a disease to a color
+for (let i = 0; i < disease_list.length; i++) {
+  name = disease_list[i];
+  color_map[name] = colors[i];
+}
+
 module.exports = (year_month = 0) => {
-  const d3 = require('d3');
-  // const myUtilityFunc = require('./utility-funcs');
-
-
   const dated = require('./dated.csv')
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
@@ -26,7 +35,12 @@ module.exports = (year_month = 0) => {
 
   // Parse the Data
   d3.csv(dated).then(function(data) {
-    data = data.filter(function(d){return d['ym'] == year_month})
+    data = data.filter(function(d){
+      var cond = d['ym'] == year_month;
+      // only restric for disease in the disease list
+      cond &= disease_list.includes(d.Disease);
+      return cond
+    })
     data = data.sort(function(a,b){return b.Count - a.Count})
     data = data.slice(0,8)
     var max = d3.max(data, function(d) { return +d.Count;} );
@@ -52,9 +66,6 @@ module.exports = (year_month = 0) => {
     svg.append("g")
       .call(d3.axisLeft(y));
 
-    // Color Mappings Using this color-blind friendly color pallette:
-    // https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
-    var color_map = ['#332288', '#117733', '#44aa99', '#88ccee', '#ddcc77', '#cc6677', '#aa4499', '#aa4499']
     // Bars
     svg.selectAll("mybar")
       .data(data)
@@ -64,13 +75,9 @@ module.exports = (year_month = 0) => {
         .attr("y", function(d) { return y(d.Count); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Count); })
-        .attr("fill", function(d,i){return color_map[i]})
+        .attr("fill", function(d,i){return color_map[d.Disease]})
 
-  var keys = data.map(function(d) { return d.Disease; })
-  var color = d3.scaleOrdinal()
-      .domain(keys)
-      .range(color_map)
-
+  var keys = data.map(function(d) { return d.Disease})
   var size = 20
   // Add one dot in the legend for each name.
   lsvg.selectAll("mydots")
@@ -80,7 +87,7 @@ module.exports = (year_month = 0) => {
       .attr("cx", 60)
       .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
       .attr("r", 7)
-      .style("fill", function(d){ return color(d)})
+      .style("fill", function(d){ return color_map[d]})
 
   // Add one dot in the legend for each name.
   lsvg.selectAll("mylabels")

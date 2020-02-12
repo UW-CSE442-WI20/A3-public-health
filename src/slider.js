@@ -35,7 +35,10 @@ module.exports = () => {
         let month = sliderValue % 12;
         let year = Math.floor(sliderValue / 12);
         document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
+
+        // clear the old graph and legend
         document.getElementById("bar-chart").innerHTML = "";
+        document.getElementById("bar-legend").innerHTML = "";
         bar(this.value);
     });
 };
