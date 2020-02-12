@@ -39,8 +39,6 @@ module.exports = () => {
         // clear the old graph and legend
         svgs = document.querySelectorAll("svg");
         bar(this.value);
-        let content = document.querySelectorAll("div.grid-element")[1];
-        let contentStyle = window.getComputedStyle(content);
         svgs.forEach(element => {element.remove()});
     }
     slider.addEventListener("input", update);
