@@ -6,7 +6,7 @@ module.exports = (year_month = 0) => {
   const dated = require('./dated.csv')
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 920 - margin.left - margin.right,
+      width = 1200 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -18,11 +18,17 @@ module.exports = (year_month = 0) => {
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+  var lsvg = d3.select("#bar-legend") //Legend SVG
+    .append("svg")
+      .attr("width", 400)
+      .attr("height", 500)
+    .append("g");
+
   // Parse the Data
   d3.csv(dated).then(function(data) {
     data = data.filter(function(d){return d['ym'] == year_month})
     data = data.sort(function(a,b){return b.Count - a.Count})
-    data = data.slice(0,10)
+    data = data.slice(0,8)
     var max = d3.max(data, function(d) { return +d.Count;} );
     var max = Math.ceil(max / 15000) * 15000
     console.log(max)
@@ -46,6 +52,9 @@ module.exports = (year_month = 0) => {
     svg.append("g")
       .call(d3.axisLeft(y));
 
+    // Color Mappings Using this color-blind friendly color pallette:
+    // https://davidmathlogic.com/colorblind/#%23332288-%23117733-%2344AA99-%2388CCEE-%23DDCC77-%23CC6677-%23AA4499-%23882255
+    var color_map = ['#332288', '#117733', '#44aa99', '#88ccee', '#ddcc77', '#cc6677', '#aa4499', '#aa4499']
     // Bars
     svg.selectAll("mybar")
       .data(data)
@@ -55,7 +64,34 @@ module.exports = (year_month = 0) => {
         .attr("y", function(d) { return y(d.Count); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Count); })
-        .attr("fill", "#69b3a2")
+        .attr("fill", function(d,i){return color_map[i]})
 
+  var keys = data.map(function(d) { return d.Disease; })
+  var color = d3.scaleOrdinal()
+      .domain(keys)
+      .range(color_map)
+
+  var size = 20
+  // Add one dot in the legend for each name.
+  lsvg.selectAll("mydots")
+    .data(keys)
+    .enter()
+    .append("circle")
+      .attr("cx", 60)
+      .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr("r", 7)
+      .style("fill", function(d){ return color(d)})
+
+  // Add one dot in the legend for each name.
+  lsvg.selectAll("mylabels")
+  .data(keys)
+  .enter()
+  .append("text")
+    .attr("x", 80)
+    .attr("y", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
+    // .style("fill", function(d){ return color(d)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
   })
 };
