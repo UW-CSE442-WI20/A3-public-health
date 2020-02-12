@@ -63,33 +63,33 @@
         .attr("height", function(d) { return height - y(d.Count); })
         .attr("fill", function(d,i){return color_map[i]})
 
-    var keys = data.map(function(d) { return d.Disease; })
-    var color = d3.scaleOrdinal()
+  var keys = data.map(function(d) { return d.Disease; })
+  var color = d3.scaleOrdinal()
       .domain(keys)
       .range(color_map)
 
-      var size = 20
-  lsvg.selectAll("mydots")
+  var size = 20
+  // Add one dot in the legend for each name.
+  svg.selectAll("mydots")
     .data(keys)
     .enter()
-    .append("rect")
-      .attr("x", 100)
-      .attr("y", function(d,i){ return 100 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
-      .attr("width", size)
-      .attr("height", size)
+    .append("circle")
+      .attr("cx", 100)
+      .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr("r", 7)
       .style("fill", function(d){ return color(d)})
 
   // Add one dot in the legend for each name.
-  lsvg.selectAll("mylabels")
-    .data(keys)
-    .enter()
-    .append("text")
-      .attr("x", 100 + size*1.2)
-      .attr("y", function(d,i){ return 100 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
-      .style("fill", function(d){ return color(d)})
-      .text(function(d){ return d})
-      .attr("text-anchor", "left")
-      .style("alignment-baseline", "middle")
+  svg.selectAll("mylabels")
+  .data(keys)
+  .enter()
+  .append("text")
+    .attr("x", 120)
+    .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    // .style("fill", function(d){ return color(d)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
   })
 
 })()
