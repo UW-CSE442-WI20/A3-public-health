@@ -57,18 +57,20 @@ h1 {
 
 body, .grid-container {
     display: grid;
-    grid-template-areas: "header header"
-                         "content content"
-                         "content content"
-                         "content content";
+    grid-template-areas: "header header header"
+                         "sidebar content content"
+                         "sidebar content content"
+                         "sidebar content content";
 }
 
-#main-content {
+.grid-element.content {
+    grid-area: content;
     margin-right: 16%;
     min-width: 1200px;
 }
 
-#legend-container {
+.grid-element.sidebar {
+    grid-area: sidebar;
     padding-left: 16%;
     width: 400px;
 }
