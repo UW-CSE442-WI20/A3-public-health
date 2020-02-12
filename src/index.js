@@ -1,6 +1,7 @@
 const d3 = require('d3');
 const bar = require("./bar.js");
 const slider = require("./slider.js");
+const playBtn = require("./play.js");
 
 const DEBUG_MODE = true;
 
@@ -15,4 +16,5 @@ if (!DEBUG_MODE) {
 
 slider();
 bar();
+playBtn();
 

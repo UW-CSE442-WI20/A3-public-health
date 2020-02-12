@@ -39,4 +39,5 @@ module.exports = () => {
         bar(this.value);
     }
     slider.addEventListener("input", update);
+    slider.onclick = update;
 };

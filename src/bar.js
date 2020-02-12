@@ -16,7 +16,7 @@ module.exports = (year_month = 0) => {
   var char_generated = document.getElementById("bar-chart").childElementCount > 0;
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 1200 - margin.left - margin.right,
+      width = 800 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -108,7 +108,7 @@ module.exports = (year_month = 0) => {
       // when page first loads
       // create hover window
       var info = d3.select("body").append("div")
-        .attr("class", "tooltip")
+        .attr("id", "tooltip")
       svg.selectAll("mybar")
         .data(data)
         .enter()
@@ -123,27 +123,34 @@ module.exports = (year_month = 0) => {
           .on('mouseover', function (d, i) {
             // bar char hover color change
             d3.select(this).transition()
-                 .duration(50)
+                 .duration(10)
                  .attr("opacity", .85);
             // show hover window
             info.transition()
-              .duration(50)
-              .attr("opacity", 1)
+              .duration(10)
+              .style("opacity", 1)
             // set the content and position the hover window
             info.html(`<strong>${d.Disease}</strong><br>
                        <strong>Date:</strong> ${document.getElementById("month-year").innerText}<br>
                        <strong>Infected Number:</strong> ${parseInt(d.Count)}`)
               .style("left", d3.event.pageX + 10 + "px")
               .style("top", d3.event.pageY - 15 + "px")
-              .style("position", "absolute")
+              .style("position", "absolute");
+            // highlight legend
+            document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
+              e.classList.add("legend-highlight");
+            })
           })
           .on('mouseout', function (d, i) {
-                d3.select(this).transition()
-                  .duration(50)
-                  .attr("opacity", 1);
-                info.transition()
-                  .duration(50)
-                  .attr("opacity", 0)
+            d3.select(this).transition()
+              .duration(10)
+              .attr("opacity", 1);
+            info.transition()
+              .duration(10)
+              .style("opacity", 0);
+            document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
+              e.classList.remove("legend-highlight");
+            })
           })
     }
 
@@ -155,6 +162,7 @@ module.exports = (year_month = 0) => {
         .data(keys)
         .enter()
         .append("circle")
+          .attr("disease", (d) => {return d})
           .attr("class", "legend-circles")
           .attr("cx", 60)
           .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
@@ -168,6 +176,7 @@ module.exports = (year_month = 0) => {
       .data(keys)
       .enter()
       .append("text")
+        .attr("disease", (d) => {return d})
         .attr("class", "legend-text")
         .attr("x", 80)
         .attr("y", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots

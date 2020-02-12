@@ -9,14 +9,15 @@ h1, p, div {
 header {
     grid-area: header;
     background-color: #f8f8f8;
-    padding: 2% 1% 0 1%;
+    padding: 0.5% 1% 0 1%;
   }
 
 h1 {
     font-size: 48px;
-    line-height: 1.04;
+    /* line-height: 1.04; */
     color: #000000;
     margin-left: 16%;
+    margin-top: 0;
 }
 
 #description {
@@ -25,6 +26,25 @@ h1 {
     margin-right: 54%;
     margin-left: 16%;
   }
+
+#btn-and-slider {
+    display: flex;
+    align-items: center;
+}
+
+#play-btn {
+    margin-top: 2%;
+    height: 30px;
+    width: 30px;
+}
+
+.pause {
+    background-color: #000000;
+}
+
+.legend-highlight {
+    font-weight: bold;
+}
 
 /* slider format */
 
@@ -58,20 +78,31 @@ h1 {
     min-height: 700px;
 }
 
+#tooltip {
+    border-radius: 5px;
+    border: solid 2px #bdbdbd;
+    background-color: #f2f2f2;
+    padding: 0.5%;
+}
+
 /* css grid settings */
 
 body, .grid-container {
     display: grid;
-    grid-template-areas: "header header header"
-                         "sidebar content content"
-                         "sidebar content content"
-                         "sidebar content content";
+    grid-template-areas: "header"
+                         "content";
 }
 
 .grid-element.content {
     grid-area: content;
-    margin-right: 16%;
-    min-width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-container.content > * {
+    display: inline;
 }
 
 .grid-element.sidebar {
