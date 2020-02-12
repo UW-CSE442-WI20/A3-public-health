@@ -1,4 +1,5 @@
-(() => {
+module.exports = () => {
+    const bar = require("./bar.js");
     const MONTHS = ["January", "February", "March", "April",
                     "May", "June", "July", "August", "September",
                     "October", "November", "December"];
@@ -34,5 +35,7 @@
         let month = sliderValue % 12;
         let year = Math.floor(sliderValue / 12);
         document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
+        document.getElementById("bar-chart").innerHTML = "";
+        bar(this.value);
     });
-})()
+};

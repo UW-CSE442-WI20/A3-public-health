@@ -1,4 +1,4 @@
-(() => {
+module.exports = (year_month = 0) => {
   const d3 = require('d3');
   // const myUtilityFunc = require('./utility-funcs');
 
@@ -18,7 +18,6 @@
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-  var year_month = 32
   // Parse the Data
   d3.csv(dated).then(function(data) {
     data = data.filter(function(d){return d['ym'] == year_month})
@@ -59,4 +58,4 @@
         .attr("fill", "#69b3a2")
 
   })
-})()
+};

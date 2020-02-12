@@ -1,5 +1,5 @@
 /* This is the main style sheet */
-* {
+h1, p, div {
     font-family: Roboto;
     font-size: 16px;
     color: #4f4f4f;
@@ -15,10 +15,14 @@ h1 {
     font-size: 48px;
     line-height: 1.04;
     color: #000000;
+    margin-left: 16%;
 }
 
 #description {
     line-height: 1.25;
+    width: 50%;
+    margin-right: 54%;
+    margin-left: 16%;
   }
 
 /* slider format */
@@ -44,7 +48,7 @@ h1 {
 }
 
 #month-year {
-    margin-top: 3%;
+    margin-top: 1%;
     text-align: center;
 }
 
