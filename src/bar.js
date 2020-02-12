@@ -6,7 +6,7 @@
   const dated = require('./dated.csv')
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 920 - margin.left - margin.right,
+      width = 1200 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -19,6 +19,10 @@
             "translate(" + margin.left + "," + margin.top + ")");
 
   var lsvg = d3.select("#bar-legend") //Legend SVG
+    .append("svg")
+      .attr("width", 400)
+      .attr("height", 500)
+    .append("g");
 
   var year_month = 32
   // Parse the Data
@@ -70,22 +74,22 @@
 
   var size = 20
   // Add one dot in the legend for each name.
-  svg.selectAll("mydots")
+  lsvg.selectAll("mydots")
     .data(keys)
     .enter()
     .append("circle")
-      .attr("cx", 100)
-      .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr("cx", 60)
+      .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
       .attr("r", 7)
       .style("fill", function(d){ return color(d)})
 
   // Add one dot in the legend for each name.
-  svg.selectAll("mylabels")
+  lsvg.selectAll("mylabels")
   .data(keys)
   .enter()
   .append("text")
-    .attr("x", 120)
-    .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("x", 80)
+    .attr("y", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
     // .style("fill", function(d){ return color(d)})
     .text(function(d){ return d})
     .attr("text-anchor", "left")
