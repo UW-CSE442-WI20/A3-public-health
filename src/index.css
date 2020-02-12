@@ -27,6 +27,21 @@ h1 {
     margin-left: 16%;
   }
 
+#btn-and-slider {
+    display: flex;
+    align-items: center;
+}
+
+#play-btn {
+    margin-top: 2%;
+    height: 30px;
+    width: 30px;
+}
+
+.pause {
+    background-color: #000000;
+}
+
 /* slider format */
 
 #time-slider-container {
