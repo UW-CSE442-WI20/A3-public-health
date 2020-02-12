@@ -16,7 +16,7 @@ module.exports = (year_month = 0) => {
   var char_generated = document.getElementById("bar-chart").childElementCount > 0;
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 1200 - margin.left - margin.right,
+      width = 800 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -107,7 +107,7 @@ module.exports = (year_month = 0) => {
       // when page first loads
       // create hover window
       var info = d3.select("body").append("div")
-        .attr("class", "tooltip")
+        .attr("id", "tooltip")
       svg.selectAll("mybar")
         .data(data)
         .enter()
@@ -127,7 +127,7 @@ module.exports = (year_month = 0) => {
             // show hover window
             info.transition()
               .duration(50)
-              .attr("opacity", 1)
+              .style("opacity", 1)
             // set the content and position the hover window
             info.html(`<strong>${d.Disease}</strong><br>
                        <strong>Date:</strong> ${document.getElementById("month-year").innerText}<br>
@@ -142,7 +142,7 @@ module.exports = (year_month = 0) => {
                   .attr("opacity", 1);
                 info.transition()
                   .duration(50)
-                  .attr("opacity", 0)
+                  .style("opacity", 0)
           })
     }
 
