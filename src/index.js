@@ -1,11 +1,18 @@
-/**
- * Using a bundler let's us import
- * third party libraries and our own modules
- * using the "require()" or "import * from 'X'"
- * syntax.
- */
-
 const d3 = require('d3');
-const myUtilityFunc = require('./utility-funcs');
+const bar = require("./bar.js");
+const slider = require("./slider.js");
 
-console.log('This function was imported from another file.', myUtilityFunc(2));
+const DEBUG_MODE = true;
+
+// turn off console.log when not in debug mode
+if (!DEBUG_MODE) {
+    var console = {};
+    console.log = function(){};
+    var alert = function(){};
+    window.console = console;
+    window.alert = alert;
+}
+
+slider();
+bar();
+
