@@ -1,4 +1,9 @@
 (() => {
+    const MONTHS = ["January", "February", "March", "April",
+                    "May", "June", "July", "August", "September",
+                    "October", "November", "December"];
+    const YERAS = ["2016", "2017", "2018"]
+
     // add the label
     label = document.getElementById("time-slider-label");
     labels = ["2016", "2017", "2018", "2018 Dec."];
@@ -10,8 +15,6 @@
             div.innerText = labels[1]
         } else if (i === 24) {
             div.innerText = labels[2]
-        } else if (i === 35) {
-            div.innerText = labels[3]
         }
         label.appendChild(div);
     }
@@ -26,7 +29,10 @@
 
     // behavior when slider changes
     slider = document.getElementById("time-slider");
-    slider.addEventListener("change", function() {
-        console.log(this.value)
+    slider.addEventListener("input", function() {
+        let sliderValue = this.value;
+        let month = sliderValue % 12;
+        let year = Math.floor(sliderValue / 12);
+        document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
     });
 })()

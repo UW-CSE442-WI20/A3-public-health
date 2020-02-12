@@ -1,20 +1,27 @@
 /* This is the main style sheet */
-
 * {
-    /*
-    set general style of the entire page.
-    can be overwritten later.
-    */
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto;
+    font-size: 16px;
+    color: #4f4f4f;
 }
+
+header {
+    grid-area: header;
+    background-color: #f8f8f8;
+    padding: 2% 1% 0 1%; // clockwise from the top
+  }
 
 h1 {
-    /*
-    set the style for the title
-    */
-    color: blue;
-    text-align: center;
+    font-size: 48px;
+    line-height: 1.04;
+    color: #000000;
 }
+
+#description {
+    line-height: 1.25;
+  }
+
+/* slider format */
 
 #time-slider-container {
     padding: 0 2%;
@@ -31,39 +38,32 @@ h1 {
     grid-template-columns: repeat(36, 1fr);
 }
 
-#time-slider-label > div{
+#time-slider-label > div {
     text-align: center;
     vertical-align: middle;
 }
+
+#month-year {
+    margin-top: 3%;
+    text-align: center;
+}
+
+/* css grid settings */
 
 body, .grid-container {
     display: grid;
     grid-template-areas: "header    header  header"
                          "sidebar   content content"
                          "sidebar   content content"
-                         "sidebar   content content"
-                         "footer    footer  footer";
+                         "sidebar   content content";
     height: 600px;
 }
-
-header.grid-element {
-    grid-area: header;
-    background-color: gray;
-}
-
-footer.grid-element {
-    grid-area: footer;
-    background-color: beige;
-}
-
 .grid-element.content {
     grid-area: content;
-    background-color: chartreuse;
 }
 
 .grid-element.sidebar {
     grid-area: sidebar;
-    background-color: blue;
 }
 
 /* An example of CSS anim */

@@ -1,6 +1,6 @@
 (() => {
   const d3 = require('d3');
-  const myUtilityFunc = require('./utility-funcs');
+  // const myUtilityFunc = require('./utility-funcs');
 
 
   const dated = require('./dated.csv')
