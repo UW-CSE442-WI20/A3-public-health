@@ -42,6 +42,10 @@ h1 {
     background-color: #000000;
 }
 
+.legend-highlight {
+    font-weight: bold;
+}
+
 /* slider format */
 
 #time-slider-container {
@@ -85,16 +89,16 @@ h1 {
 
 body, .grid-container {
     display: grid;
-    grid-template-areas: "header header header"
-                         "sidebar content content"
-                         "sidebar content content"
-                         "sidebar content content";
+    grid-template-areas: "header"
+                         "content";
 }
 
 .grid-element.content {
     grid-area: content;
-    margin-right: 16%;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 .grid-container.content > * {
