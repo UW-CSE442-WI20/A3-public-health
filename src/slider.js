@@ -37,9 +37,9 @@ module.exports = () => {
         document.getElementById("month-year").innerText = `${MONTHS[month]} ${YERAS[year]}`;
 
         // clear the old graph and legend
-        svgs = document.querySelectorAll("svg");
+        // svgs = document.querySelectorAll("svg");
         bar(this.value);
-        svgs.forEach(element => {element.remove()});
+        // svgs.forEach(element => {element.remove()});
     }
     slider.addEventListener("input", update);
 };

@@ -10,28 +10,35 @@ for (let i = 0; i < disease_list.length; i++) {
   name = disease_list[i];
   color_map[name] = colors[i];
 }
+const dated = require('./dated.csv')
 
 module.exports = (year_month = 0) => {
-  const dated = require('./dated.csv')
+  var char_generated = document.getElementById("bar-chart").childElementCount > 0;
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
       width = 1200 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
-  var svg = d3.select("#bar-chart")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+  var svg = d3.select("#bar-chart");
+  if (!char_generated) {
+    svg = d3.select("#bar-chart")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+  }
 
   var lsvg = d3.select("#bar-legend") //Legend SVG
-    .append("svg")
-      .attr("width", 400)
-      .attr("height", 500)
-    .append("g");
+  if (!char_generated) {
+    lsvg = d3.select("#bar-legend")
+      .append("svg")
+        .attr("width", 400)
+        .attr("height", 500)
+      .append("g");
+  }
 
   // Parse the Data
   d3.csv(dated).then(function(data) {
@@ -52,54 +59,90 @@ module.exports = (year_month = 0) => {
       .range([ 0, width ])
       .domain(data.map(function(d) { return d.Disease; }))
       .padding(0.2);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-      .selectAll("text")
-        .attr("transform", "translate(-10,0)rotate(-45)")
-        .style("text-anchor", "end");
+    if (char_generated) {
+      d3.select("#x-axis")
+        .transition()
+        // .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        // .selectAll("text")
+        //   .attr("transform", "translate(-10,0)rotate(-45)")
+        //   .style("text-anchor", "end");
+    } else {
+      svg.append("g")
+        .attr("id", "x-axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+          .attr("transform", "translate(-10,0)rotate(-45)")
+          .style("text-anchor", "end");
+    }
 
     // Add Y axis
     var y = d3.scaleLinear()
       .domain([0, max])
       .range([ height, 0]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
+    if (char_generated) {
+      d3.select("#y-axis")
+        .transition()
+        .call(d3.axisLeft(y));
+    } else {
+      svg.append("g")
+        .attr("id", "y-axis")
+        .call(d3.axisLeft(y));
+    }
 
     // Bars
-    svg.selectAll("mybar")
-      .data(data)
+    if (char_generated) {
+      svg.selectAll("mybar")
+        .data(data)
+        .enter();
+      d3.selectAll('rect')
+        .transition()
+          .attr("x", function(d) { return x(d.Disease); })
+          .attr("y", function(d) { return y(d.Count); })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) { return height - y(d.Count); })
+          .attr("fill", function(d,i){return color_map[d.Disease]})
+    } else {
+      svg.selectAll("mybar")
+        .data(data)
+        .enter()
+        .append("rect")
+          .attr("x", function(d) { return x(d.Disease); })
+          .attr("y", function(d) { return y(d.Count); })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) { return height - y(d.Count); })
+          .attr("fill", function(d,i){return color_map[d.Disease]})
+    }
+
+    var keys = data.map(function(d) { return d.Disease})
+    var size = 20
+    // Add one dot in the legend for each name.
+    if (!char_generated) {
+      lsvg.selectAll("mydots")
+        .data(keys)
+        .enter()
+        .append("circle")
+          .attr("class", "legend-circles")
+          .attr("cx", 60)
+          .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
+          .attr("r", 7)
+          .style("fill", function(d){ return color_map[d]})
+    }
+
+    // Add one dot in the legend for each name.
+    if (!char_generated) {
+      lsvg.selectAll("mylabels")
+      .data(keys)
       .enter()
-      .append("rect")
-        .attr("x", function(d) { return x(d.Disease); })
-        .attr("y", function(d) { return y(d.Count); })
-        .attr("width", x.bandwidth())
-        .attr("height", function(d) { return height - y(d.Count); })
-        .attr("fill", function(d,i){return color_map[d.Disease]})
-
-  var keys = data.map(function(d) { return d.Disease})
-  var size = 20
-  // Add one dot in the legend for each name.
-  lsvg.selectAll("mydots")
-    .data(keys)
-    .enter()
-    .append("circle")
-      .attr("cx", 60)
-      .attr("cy", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
-      .attr("r", 7)
-      .style("fill", function(d){ return color_map[d]})
-
-  // Add one dot in the legend for each name.
-  lsvg.selectAll("mylabels")
-  .data(keys)
-  .enter()
-  .append("text")
-    .attr("x", 80)
-    .attr("y", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
-    // .style("fill", function(d){ return color(d)})
-    .text(function(d){ return d})
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle")
+      .append("text")
+        .attr("class", "legend-text")
+        .attr("x", 80)
+        .attr("y", function(d,i){ return 100 + i*40}) // 100 is where the first dot appears. 25 is the distance between dots
+        // .style("fill", function(d){ return color(d)})
+        .text(function(d){ return d})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
+    }
   })
-  return [svg, lsvg];
 };
