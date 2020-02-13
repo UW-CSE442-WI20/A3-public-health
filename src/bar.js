@@ -14,7 +14,11 @@ for (let i = 0; i < disease_list.length; i++) {
 // look_up["HIV"][0] reutrns the count for HIV at Jan 2016
 var look_up = {};
 const dated = require('./dated.csv')
-var year_month = 0
+var year_month = 0;
+
+// in ms
+const TRANSITION_TIME = 50;
+
 module.exports = (ym) => {
   if (ym) {
     year_month = ym;
@@ -58,7 +62,7 @@ module.exports = (ym) => {
     // data = data.slice(0,8)
     var max = d3.max(data, function(d) { return +d.Count;} );
     var max = Math.ceil(max / 15000) * 15000
-    // console.log(max)
+    console.log(max)
     // add to look up
     data.forEach(d => {
       if (!look_up[d.Disease]) {
@@ -109,16 +113,22 @@ module.exports = (ym) => {
 
     // Bars
     if (char_generated) {
-      svg.selectAll("mybar")
-        .data(data)
-        .enter();
       d3.selectAll('rect')
+        .data(data)
         .transition()
           .attr("x", function(d) { return x(d.Disease); })
           .attr("y", function(d) { return y(d.Count); })
+          // .attr("y", function(d) { return height - y(d.Count); })
+          // .attr("height", function(d) { return y(d.Count); })
+          .attr("height", function(d) {
+            console.log(`${d.Disease}, ${d.Count}, ${height- y(d.Count)}`);
+            return height - y(d.Count); })
           .attr("width", x.bandwidth())
-          .attr("height", function(d) { return height - y(d.Count); })
-          .attr("fill", function(d,i){return color_map[d.Disease]})
+          .attr("fill", function(d,i){
+            // close hover window
+            document.getElementById("tooltip").style.opacity = 0
+            return color_map[d.Disease];
+          })
     } else {
       // when page first loads
       // create hover window
@@ -132,16 +142,18 @@ module.exports = (ym) => {
           .attr("count", (d) => {return d.count})
           .attr("x", function(d) { return x(d.Disease); })
           .attr("y", function(d) { return y(d.Count); })
-          .attr("width", x.bandwidth())
+          // .attr("y", function(d) { return height - y(d.Count); })
+          // .attr("height", function(d) { return y(d.Count); })
           .attr("height", function(d) { return height - y(d.Count); })
+          .attr("width", x.bandwidth())
           .attr("fill", function(d,i){return color_map[d.Disease]})
           .on('mouseover', mouseover)
           .on('mouseout', function (d, i) {
             d3.select(this).transition()
-              .duration(10)
+              .duration(TRANSITION_TIME)
               .attr("opacity", 1);
             info.transition()
-              .duration(10)
+              .duration(TRANSITION_TIME)
               .style("opacity", 0);
             document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
               e.classList.remove("legend-highlight");
@@ -153,11 +165,11 @@ module.exports = (ym) => {
       // console.log(look_up)
       // bar char hover color change
       d3.select(this).transition()
-        .duration(10)
+        .duration(TRANSITION_TIME)
         .attr("opacity", .85);
       // show hover window
       info.transition()
-        .duration(10)
+        .duration(TRANSITION_TIME)
         .style("opacity", 1)
       // set the content and position the hover window
       info.html(`<strong>${d.Disease}</strong><br>
@@ -166,6 +178,7 @@ module.exports = (ym) => {
         .style("left", d3.event.pageX + 10 + "px")
         .style("top", d3.event.pageY - 15 + "px")
         .style("position", "absolute");
+      document.getElementById("tooltip").className = d.Disease;
       // highlight legend
       document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
         e.classList.add("legend-highlight");

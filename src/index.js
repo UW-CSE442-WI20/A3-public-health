@@ -15,6 +15,6 @@ if (!DEBUG_MODE) {
 }
 
 slider();
-bar();
+bar(document.getElementById("time-slider").value);
 playBtn();
 
