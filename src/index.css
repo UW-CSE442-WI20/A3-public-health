@@ -59,13 +59,13 @@ h1 {
     margin-top: 2%;
     height: 30px;
     width: 30px;
-    background-image: url("./play_button.png");
+    background-image: url('btn-images//play_button.png');
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
 .pause {
-    background-image: url("./pause_button.png") !important;
+    background-image: url('btn-images//pause_button.png') !important;
 }
 
 .legend-highlight {
