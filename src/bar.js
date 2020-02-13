@@ -10,9 +10,19 @@ for (let i = 0; i < disease_list.length; i++) {
   name = disease_list[i];
   color_map[name] = colors[i];
 }
+// for the hover window; look_up contains disease, year_month, and count
+// look_up["HIV"][0] reutrns the count for HIV at Jan 2016
+var look_up = {};
 const dated = require('./dated.csv')
+var year_month = 0;
 
-module.exports = (year_month = 0) => {
+// in ms
+const TRANSITION_TIME = 50;
+
+module.exports = (ym) => {
+  if (ym) {
+    year_month = ym;
+  }
   var char_generated = document.getElementById("bar-chart").childElementCount > 0;
 
   var margin = {top: 30, right: 30, bottom: 70, left: 60},
@@ -46,13 +56,20 @@ module.exports = (year_month = 0) => {
       var cond = d['ym'] == year_month;
       // only restric for disease in the disease list
       cond &= disease_list.includes(d.Disease);
-      return cond
+      return cond;
     })
     data = data.sort(function(a,b){return b.Count - a.Count})
-    data = data.slice(0,8)
+    // data = data.slice(0,8)
     var max = d3.max(data, function(d) { return +d.Count;} );
     var max = Math.ceil(max / 15000) * 15000
     console.log(max)
+    // add to look up
+    data.forEach(d => {
+      if (!look_up[d.Disease]) {
+        look_up[d.Disease] = {};
+      }
+      look_up[d.Disease][year_month] = d.Count;
+    })
 
     // X axis
     var x = d3.scaleBand()
@@ -62,11 +79,7 @@ module.exports = (year_month = 0) => {
     if (char_generated) {
       d3.select("#x-axis")
         .transition()
-        // .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x))
-        // .selectAll("text")
-        //   .attr("transform", "translate(-10,0)rotate(-45)")
-        //   .style("text-anchor", "end");
     } else {
       svg.append("g")
         .attr("id", "x-axis")
@@ -91,19 +104,31 @@ module.exports = (year_month = 0) => {
         .attr("id", "y-axis")
         .call(d3.axisLeft(y));
     }
+    // remove ticks without a number
+    document.querySelectorAll(".tick").forEach(e => {
+      if (e.querySelector("text").innerHTML == "") {
+        e.remove();
+      }
+    })
 
     // Bars
     if (char_generated) {
-      svg.selectAll("mybar")
-        .data(data)
-        .enter();
       d3.selectAll('rect')
+        .data(data)
         .transition()
           .attr("x", function(d) { return x(d.Disease); })
           .attr("y", function(d) { return y(d.Count); })
+          // .attr("y", function(d) { return height - y(d.Count); })
+          // .attr("height", function(d) { return y(d.Count); })
+          .attr("height", function(d) {
+            console.log(`${d.Disease}, ${d.Count}, ${height- y(d.Count)}`);
+            return height - y(d.Count); })
           .attr("width", x.bandwidth())
-          .attr("height", function(d) { return height - y(d.Count); })
-          .attr("fill", function(d,i){return color_map[d.Disease]})
+          .attr("fill", function(d,i){
+            // close hover window
+            document.getElementById("tooltip").style.opacity = 0
+            return color_map[d.Disease];
+          })
     } else {
       // when page first loads
       // create hover window
@@ -117,41 +142,47 @@ module.exports = (year_month = 0) => {
           .attr("count", (d) => {return d.count})
           .attr("x", function(d) { return x(d.Disease); })
           .attr("y", function(d) { return y(d.Count); })
-          .attr("width", x.bandwidth())
+          // .attr("y", function(d) { return height - y(d.Count); })
+          // .attr("height", function(d) { return y(d.Count); })
           .attr("height", function(d) { return height - y(d.Count); })
+          .attr("width", x.bandwidth())
           .attr("fill", function(d,i){return color_map[d.Disease]})
-          .on('mouseover', function (d, i) {
-            // bar char hover color change
-            d3.select(this).transition()
-                 .duration(10)
-                 .attr("opacity", .85);
-            // show hover window
-            info.transition()
-              .duration(10)
-              .style("opacity", 1)
-            // set the content and position the hover window
-            info.html(`<strong>${d.Disease}</strong><br>
-                       <strong>Date:</strong> ${document.getElementById("month-year").innerText}<br>
-                       <strong>Infected Number:</strong> ${parseInt(d.Count)}`)
-              .style("left", d3.event.pageX + 10 + "px")
-              .style("top", d3.event.pageY - 15 + "px")
-              .style("position", "absolute");
-            // highlight legend
-            document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
-              e.classList.add("legend-highlight");
-            })
-          })
+          .on('mouseover', mouseover)
           .on('mouseout', function (d, i) {
             d3.select(this).transition()
-              .duration(10)
+              .duration(TRANSITION_TIME)
               .attr("opacity", 1);
             info.transition()
-              .duration(10)
+              .duration(TRANSITION_TIME)
               .style("opacity", 0);
             document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
               e.classList.remove("legend-highlight");
             })
           })
+    }
+
+    function mouseover(d) {
+      // console.log(look_up)
+      // bar char hover color change
+      d3.select(this).transition()
+        .duration(TRANSITION_TIME)
+        .attr("opacity", .85);
+      // show hover window
+      info.transition()
+        .duration(TRANSITION_TIME)
+        .style("opacity", 1)
+      // set the content and position the hover window
+      info.html(`<strong>${d.Disease}</strong><br>
+                  <strong>Date:</strong> ${document.getElementById("month-year").innerText}<br>
+                  <strong>Infected Number:</strong> ${parseInt(look_up[d.Disease][year_month])}`)
+        .style("left", d3.event.pageX + 10 + "px")
+        .style("top", d3.event.pageY - 15 + "px")
+        .style("position", "absolute");
+      document.getElementById("tooltip").className = d.Disease;
+      // highlight legend
+      document.querySelectorAll(`#bar-legend *[disease='${d.Disease}']`).forEach(e =>{
+        e.classList.add("legend-highlight");
+      })
     }
 
     var keys = data.map(function(d) { return d.Disease})
