@@ -9,15 +9,38 @@ h1, p, div {
 header {
     grid-area: header;
     background-color: #f8f8f8;
-    padding: 0.5% 1% 0 1%;
+    padding: 0.5% 1% 5% 1%;
   }
 
+header img {
+    position: absolute;
+}
+
+#virus-one {
+    right: 5%;
+    top: 10%;
+    height: 199px;
+}
+
+#virus-two {
+    right: 10%;
+    top: -5%;
+    height: 214px;
+}
+
+#virus-three {
+    top: 5%;
+    left: -4%;
+    height: 131px;
+}
+
 h1 {
+    z-index: 99;
     font-size: 48px;
     /* line-height: 1.04; */
     color: #000000;
     margin-left: 16%;
-    margin-top: 0;
+    margin-top: 3%;
 }
 
 #description {
@@ -36,10 +59,13 @@ h1 {
     margin-top: 2%;
     height: 30px;
     width: 30px;
+    background-image: url("./play button.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .pause {
-    background-color: #000000;
+    background-image: url("./pause button.png") !important;
 }
 
 .legend-highlight {
@@ -90,7 +116,8 @@ h1 {
 body, .grid-container {
     display: grid;
     grid-template-areas: "header"
-                         "content";
+                         "content"
+                         "footer";
 }
 
 .grid-element.content {
@@ -111,6 +138,20 @@ body, .grid-container {
     width: 400px;
 }
 
+footer.grid-element {
+    grid-area: footer;
+}
+
+footer strong {
+    font-size: 18px;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    display: block;
+}
+
+footer p {
+    margin: 0;
+}
 /* An example of CSS anim */
 /*
 @keyframes pulse {
