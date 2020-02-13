@@ -79,9 +79,9 @@ module.exports = (year_month = 0) => {
 
     // Add Y axis
     var y = d3.scaleLog()
-      .domain([0.0001, max])
+      .domain([1, max])
       .range([ height, 0])
-      .base(10);
+      .base(5);
     if (char_generated) {
       d3.select("#y-axis")
         .transition()
